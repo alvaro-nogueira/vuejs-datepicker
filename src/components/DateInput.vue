@@ -166,7 +166,7 @@ export default {
         } else if (/mm/i.test(df[i])) {
           ymd[1] = ds[i]
         } else if (/m/i.test(df[i])) {
-          ymd[1] = ds[i]  
+          ymd[1] = ds[i]
         } else if (/dd/i.test(df[i])) {
           ymd[2] = ds[i]
         } else if (/d/i.test(df[i])) {

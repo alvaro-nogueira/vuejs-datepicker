@@ -246,6 +246,19 @@
       </code>
     </div>
 
+    <div class="example">
+      <h3>Typeable datepicker</h3>
+      <datepicker :typeable="true" format="dd/MM/yyyy" :language="languages[language]"></datepicker>
+      <code>
+        &lt;datepicker typeable=true format="dd/MM/yyyy" &gt;&lt;/datepicker&gt;
+      </code>
+      <div class="settings">
+        <h5>Settings</h5>
+        <select v-model="language">
+          <option :value="key" v-for="(language, key) in languages" :key="key">{{ language.language }}</option>
+        </select>
+    </div>
+
   </div>
 </template>
 

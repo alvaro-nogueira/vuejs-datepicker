@@ -27,7 +27,11 @@ export default {
       jsnext: true,
       browser: true
     }),
-    common(),
+    common({
+      namedExports: {
+        'node_modules/vue-the-mask/dist/vue-the-mask.js': [ 'mask' ]
+      }
+    }),
     buble({
       objectAssign: 'Object.assign'
     }),

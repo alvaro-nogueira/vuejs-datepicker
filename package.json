@@ -36,7 +36,6 @@
     "lint",
     "test"
   ],
-  "dependencies": {},
   "peerDependencies": {
     "vue": "^2.3.0"
   },
@@ -89,5 +88,8 @@
     "vue-jest": "^2.2.1",
     "vue-server-renderer": "^2.5.16",
     "vue-template-compiler": "^2.5.16"
+  },
+  "dependencies": {
+    "vue-the-mask": "^0.11.1"
   }
 }
