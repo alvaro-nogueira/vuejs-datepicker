@@ -22,6 +22,7 @@
       :required="required"
       :bootstrapStyling="bootstrapStyling"
       :use-utc="useUtc"
+      :vMaskPattern="vMaskPattern"
       @showCalendar="showCalendar"
       @closeCalendar="close"
       @typedDate="setTypedDate"
@@ -146,6 +147,7 @@ export default {
     required: Boolean,
     typeable: Boolean,
     useUtc: Boolean,
+    vMaskPattern: String,
     minimumView: {
       type: String,
       default: 'day'

@@ -11,6 +11,27 @@
     </span>
     <!-- Input -->
     <input
+      v-if="useMask()"
+      :type="inline ? 'hidden' : 'text'"
+      :class="computedInputClass"
+      :name="name"
+      :ref="refName"
+      :id="id"
+      :value="formattedValue"
+      :open-date="openDate"
+      :placeholder="placeholder"
+      :clear-button="clearButton"
+      :disabled="disabled"
+      :required="required"
+      :readonly="!typeable"
+      v-mask="vMaskPattern"
+      @click="showCalendar"
+      @keyup="parseTypedDate"
+      @blur="inputBlurred"
+      autocomplete="off">
+
+    <input 
+      v-else
       :type="inline ? 'hidden' : 'text'"
       :class="computedInputClass"
       :name="name"
@@ -27,6 +48,7 @@
       @keyup="parseTypedDate"
       @blur="inputBlurred"
       autocomplete="off">
+
     <!-- Clear Button -->
     <span v-if="clearButton && selectedDate" class="vdp-datepicker__clear-button" :class="{'input-group-append' : bootstrapStyling}" @click="clearDate()">
       <span :class="{'input-group-text' : bootstrapStyling}">
@@ -40,7 +62,9 @@
 </template>
 <script>
 import { makeDateUtils } from '../utils/DateUtils'
+import {mask} from 'vue-the-mask'
 export default {
+  directives: {mask},
   props: {
     selectedDate: Date,
     resetTypedDate: [Date],
@@ -62,7 +86,9 @@ export default {
     required: Boolean,
     typeable: Boolean,
     bootstrapStyling: Boolean,
-    useUtc: Boolean
+    useUtc: Boolean,
+    vMaskPattern: String
+
   },
   data () {
     const constructedDateUtils = makeDateUtils(this.useUtc)
@@ -101,6 +127,9 @@ export default {
     }
   },
   methods: {
+    useMask () {
+      return (this.vMaskPattern && this.vMaskPattern !== '')
+    },
     showCalendar () {
       this.$emit('showCalendar')
     },

@@ -248,7 +248,7 @@
 
     <div class="example">
       <h3>Typeable datepicker</h3>
-      <datepicker :typeable="true" format="dd/MM/yyyy" :language="languages[language]"></datepicker>
+      <datepicker vMaskPattern="##/##/####" :typeable="true" format="dd/MM/yyyy" :language="languages[language]"></datepicker>
       <code>
         &lt;datepicker typeable=true format="dd/MM/yyyy" &gt;&lt;/datepicker&gt;
       </code>
