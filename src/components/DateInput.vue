@@ -16,7 +16,6 @@
       :required="required"
       :readonly="!typeable"
       v-mask="vMaskPattern"
-      @click="showCalendar"
       @keyup="parseTypedDate"
       @blur="inputBlurred"
       autocomplete="off">
@@ -35,7 +34,6 @@
       :disabled="disabled"
       :required="required"
       :readonly="!typeable"
-      @click="showCalendar"
       @keyup="parseTypedDate"
       @blur="inputBlurred"
       autocomplete="off">
