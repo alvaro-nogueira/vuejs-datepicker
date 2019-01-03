@@ -30,7 +30,7 @@
       @blur="inputBlurred"
       autocomplete="off">
 
-    <input 
+    <input
       v-else
       :type="inline ? 'hidden' : 'text'"
       :class="computedInputClass"
