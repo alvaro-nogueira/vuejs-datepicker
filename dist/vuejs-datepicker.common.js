@@ -393,7 +393,8 @@ var DateInput = {render: function(){var _vm=this;var _h=_vm.$createElement;var _
     useMask: function useMask () {
       return (this.vMaskPattern && this.vMaskPattern !== '')
     },
-    showCalendar: function showCalendar () {
+    showCalendar: function showCalendar (event) {
+      this.input.blur();
       this.$emit('showCalendar');
     },
     /**

@@ -395,7 +395,8 @@
       useMask: function useMask () {
         return (this.vMaskPattern && this.vMaskPattern !== '')
       },
-      showCalendar: function showCalendar () {
+      showCalendar: function showCalendar (event) {
+        this.input.blur();
         this.$emit('showCalendar');
       },
       /**

@@ -249,7 +249,6 @@
     <div class="example">
       <h3>Typeable datepicker</h3>
       <datepicker 
-        :calendarButton="true" 
         :clearButton="true" 
         :open-date="new Date()"
         vMaskPattern="##/##/####" 
