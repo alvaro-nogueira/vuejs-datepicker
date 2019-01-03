@@ -1,14 +1,5 @@
 <template>
   <div :class="{'input-group' : bootstrapStyling}">
-    <!-- Calendar Button -->
-    <span v-if="calendarButton" class="vdp-datepicker__calendar-button" :class="{'input-group-prepend' : bootstrapStyling}" @click="showCalendar" v-bind:style="{'cursor:not-allowed;' : disabled}">
-      <span :class="{'input-group-text' : bootstrapStyling}">
-        <i :class="calendarButtonIcon">
-          {{ calendarButtonIconContent }}
-          <span v-if="!calendarButtonIcon">&hellip;</span>
-        </i>
-      </span>
-    </span>
     <!-- Input -->
     <input
       v-if="useMask()"
@@ -48,6 +39,16 @@
       @keyup="parseTypedDate"
       @blur="inputBlurred"
       autocomplete="off">
+
+    <!-- Calendar Button -->
+    <span v-if="calendarButton" class="vdp-datepicker__calendar-button" :class="{'input-group-prepend' : bootstrapStyling}" @click="showCalendar" v-bind:style="{'cursor:not-allowed;' : disabled}">
+      <span :class="{'input-group-text' : bootstrapStyling}">
+        <i :class="calendarButtonIcon">
+          {{ calendarButtonIconContent }}
+          <span v-if="!calendarButtonIcon">&hellip;</span>
+        </i>
+      </span>
+    </span>
 
     <!-- Clear Button -->
     <span v-if="clearButton && selectedDate" class="vdp-datepicker__clear-button" :class="{'input-group-append' : bootstrapStyling}" @click="clearDate()">
@@ -145,8 +146,9 @@ export default {
       ].includes(event.keyCode)) {
         this.input.blur()
       }
-
-      if (this.typeable) {
+      let inp = event.keyCode ? String.fromCharCode(event.keyCode) : event.keyCode
+      const rgx = /[a-zA-Z0-9-_ ]/
+      if (this.typeable && rgx.test(inp)) {
         var parseableDate = this.parseableDate(this.input.value, this.format)
         var parsedDate = Date.parse(parseableDate)
         if (!isNaN(parsedDate)) {
@@ -163,9 +165,15 @@ export default {
     inputBlurred () {
       var parseableDate = this.parseableDate(this.input.value, this.format)
       if (isNaN(Date.parse(parseableDate))) {
-        this.clearDate()
-        this.input.value = null
-        this.typedDate = null
+        if (this.openDate) {
+          this.typedDate = this.utils.formatDate(this.openDate, this.format, this.translation)
+          this.input.value = this.typedDate
+          this.$emit('typedDate', this.openDate)
+        } else {
+          this.clearDate()
+          this.input.value = null
+          this.typedDate = null
+        }
       }
 
       this.$emit('closeCalendar')
@@ -205,7 +213,7 @@ export default {
       var timezone = new Date().toString().split(' ')
       dat = ymd.join('-') + 'T00:00:00' + timezone[5].substr(3, 5)  //  include timezone to avoid wrong dates after parse
       if (isNaN(Date.parse(dat))) {
-        return datestr
+        return null
       }
       return dat
     }

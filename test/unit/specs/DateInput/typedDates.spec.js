@@ -8,7 +8,7 @@ describe('DateInput', () => {
   beforeEach(() => {
     wrapper = shallow(DateInput, {
       propsData: {
-        format: 'dd MMM yyyy',
+        format: 'yyyy-MM-dd',
         translation: en,
         typeable: true
       }
@@ -54,7 +54,7 @@ describe('DateInput', () => {
   it('doesn\'t emit the date if typeable=false', () => {
     const wrapper = shallow(DateInput, {
       propsData: {
-        format: 'dd MMM yyyy',
+        format: 'yyyy-MM-dd',
         translation: en,
         typeable: false
       }
