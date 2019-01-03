@@ -129,8 +129,8 @@ export default {
     useMask () {
       return (this.vMaskPattern && this.vMaskPattern !== '')
     },
-    showCalendar (event) {
-      this.input.blur()
+    showCalendar () {
+      this.input.focus()
       this.$emit('showCalendar')
     },
     /**
