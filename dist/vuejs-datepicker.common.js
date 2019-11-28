@@ -408,7 +408,7 @@ var script = {
       ].includes(event.keyCode)) {
         this.input.blur();
       }
-      var inp = event.keyCode ? String.fromCharCode(event.keyCode) : event.keyCode;
+      var inp = event.key;
       var rgx = /[a-zA-Z0-9-_ ]/;
       if (this.typeable && rgx.test(inp)) {
         var parseableDate = this.parseableDate(this.input.value, this.format);

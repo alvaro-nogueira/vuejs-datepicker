@@ -145,7 +145,7 @@ export default {
       ].includes(event.keyCode)) {
         this.input.blur()
       }
-      let inp = event.keyCode ? String.fromCharCode(event.keyCode) : event.keyCode
+      let inp = event.key
       const rgx = /[a-zA-Z0-9-_ ]/
       if (this.typeable && rgx.test(inp)) {
         var parseableDate = this.parseableDate(this.input.value, this.format)
