@@ -209,8 +209,7 @@ export default {
           ymd[2] = ds[i]
         }
       }
-      var timezone = new Date().toString().split(' ')
-      dat = ymd.join('-') + 'T00:00:00' + timezone[5].substr(3, 5).replace(/^([+-])?(\d{2})(\d{2})$/, '$1$2:$3') //  include timezone to avoid wrong dates after parse
+      dat = ymd.join('-') + 'T00:00:00'
       if (isNaN(Date.parse(dat))) {
         return null
       }
