@@ -4,10 +4,10 @@
  * Released under the MIT License.
  */
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('vue-the-mask'), require('vue-runtime-helpers')) :
-  typeof define === 'function' && define.amd ? define(['vue-the-mask', 'vue-runtime-helpers'], factory) :
-  (global.vuejsDatepicker = factory(global.vueTheMask,global.vueRuntimeHelpers));
-}(this, (function (vueTheMask,vueRuntimeHelpers) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('vue-the-mask')) :
+  typeof define === 'function' && define.amd ? define(['vue-the-mask'], factory) :
+  (global.vuejsDatepicker = factory(global.vueTheMask));
+}(this, (function (vueTheMask) { 'use strict';
 
   var Language = function Language (language, months, monthsAbbr, days) {
     this.language = language;
@@ -301,10 +301,12 @@
      * @return {Array}
      */
     createDateArray: function createDateArray (start, end) {
+      var this$1 = this;
+
       var dates = [];
       while (start <= end) {
         dates.push(new Date(start));
-        start = this.setDate(new Date(start), this.getDate(new Date(start)) + 1);
+        start = this$1.setDate(new Date(start), this$1.getDate(new Date(start)) + 1);
       }
       return dates
     },
@@ -325,8 +327,8 @@
   // eslint-disable-next-line
   ;
 
-  //
-  var script = {
+  (function(){ if(typeof document !== 'undefined'){ var head=document.head||document.getElementsByTagName('head')[0], style=document.createElement('style'), css=""; style.type='text/css'; if (style.styleSheet){ style.styleSheet.cssText = css; } else { style.appendChild(document.createTextNode(css)); } head.appendChild(style); } })();
+  var DateInput = {render: function(){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{class:{'input-group' : _vm.bootstrapStyling}},[(_vm.useMask())?_c('input',{directives:[{name:"mask",rawName:"v-mask",value:(_vm.vMaskPattern),expression:"vMaskPattern"}],ref:_vm.refName,class:_vm.computedInputClass,attrs:{"type":_vm.inline ? 'hidden' : 'text',"name":_vm.name,"id":_vm.id,"open-date":_vm.openDate,"placeholder":_vm.placeholder,"clear-button":_vm.clearButton,"disabled":_vm.disabled,"required":_vm.required,"readonly":!_vm.typeable,"autocomplete":"off"},domProps:{"value":_vm.formattedValue},on:{"keyup":_vm.parseTypedDate,"blur":_vm.inputBlurred}}):_c('input',{ref:_vm.refName,class:_vm.computedInputClass,attrs:{"type":_vm.inline ? 'hidden' : 'text',"name":_vm.name,"id":_vm.id,"open-date":_vm.openDate,"placeholder":_vm.placeholder,"clear-button":_vm.clearButton,"disabled":_vm.disabled,"required":_vm.required,"readonly":!_vm.typeable,"autocomplete":"off"},domProps:{"value":_vm.formattedValue},on:{"keyup":_vm.parseTypedDate,"blur":_vm.inputBlurred}}),_vm._v(" "),(_vm.calendarButton)?_c('span',{staticClass:"vdp-datepicker__calendar-button",class:{'input-group-prepend' : _vm.bootstrapStyling},style:({'cursor:not-allowed;' : _vm.disabled}),on:{"click":_vm.showCalendar}},[_c('span',{class:{'input-group-text' : _vm.bootstrapStyling}},[_c('i',{class:_vm.calendarButtonIcon},[_vm._v(" "+_vm._s(_vm.calendarButtonIconContent)+" "),(!_vm.calendarButtonIcon)?_c('span',[_vm._v("…")]):_vm._e()])])]):_vm._e(),_vm._v(" "),(_vm.clearButton && _vm.selectedDate)?_c('span',{staticClass:"vdp-datepicker__clear-button",class:{'input-group-append' : _vm.bootstrapStyling},on:{"click":function($event){_vm.clearDate();}}},[_c('span',{class:{'input-group-text' : _vm.bootstrapStyling}},[_c('i',{class:_vm.clearButtonIcon},[(!_vm.clearButtonIcon)?_c('span',[_vm._v("×")]):_vm._e()])])]):_vm._e(),_vm._v(" "),_vm._t("afterDateInput")],2)},staticRenderFns: [],
     directives: {mask: vueTheMask.mask},
     props: {
       selectedDate: Date,
@@ -488,159 +490,8 @@
   // eslint-disable-next-line
   ;
 
-  /* script */
-  var __vue_script__ = script;
-
-  /* template */
-  var __vue_render__ = function() {
-    var _vm = this;
-    var _h = _vm.$createElement;
-    var _c = _vm._self._c || _h;
-    return _c(
-      "div",
-      { class: { "input-group": _vm.bootstrapStyling } },
-      [
-        _vm.useMask()
-          ? _c("input", {
-              directives: [
-                {
-                  name: "mask",
-                  rawName: "v-mask",
-                  value: _vm.vMaskPattern,
-                  expression: "vMaskPattern"
-                }
-              ],
-              ref: _vm.refName,
-              class: _vm.computedInputClass,
-              attrs: {
-                type: _vm.inline ? "hidden" : "text",
-                name: _vm.name,
-                id: _vm.id,
-                "open-date": _vm.openDate,
-                placeholder: _vm.placeholder,
-                "clear-button": _vm.clearButton,
-                disabled: _vm.disabled,
-                required: _vm.required,
-                readonly: !_vm.typeable,
-                autocomplete: "off"
-              },
-              domProps: { value: _vm.formattedValue },
-              on: { keyup: _vm.parseTypedDate, blur: _vm.inputBlurred }
-            })
-          : _c("input", {
-              ref: _vm.refName,
-              class: _vm.computedInputClass,
-              attrs: {
-                type: _vm.inline ? "hidden" : "text",
-                name: _vm.name,
-                id: _vm.id,
-                "open-date": _vm.openDate,
-                placeholder: _vm.placeholder,
-                "clear-button": _vm.clearButton,
-                disabled: _vm.disabled,
-                required: _vm.required,
-                readonly: !_vm.typeable,
-                autocomplete: "off"
-              },
-              domProps: { value: _vm.formattedValue },
-              on: { keyup: _vm.parseTypedDate, blur: _vm.inputBlurred }
-            }),
-        _vm._v(" "),
-        _vm.calendarButton
-          ? _c(
-              "span",
-              {
-                staticClass: "vdp-datepicker__calendar-button",
-                class: { "input-group-prepend": _vm.bootstrapStyling },
-                style: { "cursor:not-allowed;": _vm.disabled },
-                on: { click: _vm.showCalendar }
-              },
-              [
-                _c(
-                  "span",
-                  { class: { "input-group-text": _vm.bootstrapStyling } },
-                  [
-                    _c("i", { class: _vm.calendarButtonIcon }, [
-                      _vm._v(
-                        "\n        " +
-                          _vm._s(_vm.calendarButtonIconContent) +
-                          "\n        "
-                      ),
-                      !_vm.calendarButtonIcon
-                        ? _c("span", [_vm._v("…")])
-                        : _vm._e()
-                    ])
-                  ]
-                )
-              ]
-            )
-          : _vm._e(),
-        _vm._v(" "),
-        _vm.clearButton && _vm.selectedDate
-          ? _c(
-              "span",
-              {
-                staticClass: "vdp-datepicker__clear-button",
-                class: { "input-group-append": _vm.bootstrapStyling },
-                on: {
-                  click: function($event) {
-                    return _vm.clearDate()
-                  }
-                }
-              },
-              [
-                _c(
-                  "span",
-                  { class: { "input-group-text": _vm.bootstrapStyling } },
-                  [
-                    _c("i", { class: _vm.clearButtonIcon }, [
-                      !_vm.clearButtonIcon ? _c("span", [_vm._v("×")]) : _vm._e()
-                    ])
-                  ]
-                )
-              ]
-            )
-          : _vm._e(),
-        _vm._v(" "),
-        _vm._t("afterDateInput")
-      ],
-      2
-    )
-  };
-  var __vue_staticRenderFns__ = [];
-  __vue_render__._withStripped = true;
-
-    /* style */
-    var __vue_inject_styles__ = undefined;
-    /* scoped */
-    var __vue_scope_id__ = undefined;
-    /* module identifier */
-    var __vue_module_identifier__ = undefined;
-    /* functional template */
-    var __vue_is_functional_template__ = false;
-    /* style inject */
-    
-    /* style inject SSR */
-    
-    /* style inject shadow dom */
-    
-
-    
-    var __vue_component__ = vueRuntimeHelpers.normalizeComponent(
-      { render: __vue_render__, staticRenderFns: __vue_staticRenderFns__ },
-      __vue_inject_styles__,
-      __vue_script__,
-      __vue_scope_id__,
-      __vue_is_functional_template__,
-      __vue_module_identifier__,
-      false,
-      undefined,
-      undefined,
-      undefined
-    );
-
-  //
-  var script$1 = {
+  (function(){ if(typeof document !== 'undefined'){ var head=document.head||document.getElementsByTagName('head')[0], style=document.createElement('style'), css=""; style.type='text/css'; if (style.styleSheet){ style.styleSheet.cssText = css; } else { style.appendChild(document.createTextNode(css)); } head.appendChild(style); } })();
+  var PickerDay = {render: function(){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.showDayView),expression:"showDayView"}],class:[_vm.calendarClass, 'vdp-datepicker__calendar'],style:(_vm.calendarStyle),on:{"mousedown":function($event){$event.preventDefault();}}},[_vm._t("beforeCalendarHeader"),_vm._v(" "),_c('header',[_c('span',{staticClass:"prev",class:{'disabled': _vm.isLeftNavDisabled},on:{"click":function($event){_vm.isRtl ? _vm.nextMonth() : _vm.previousMonth();}}},[_vm._v("<")]),_vm._v(" "),_c('span',{staticClass:"day__month_btn",class:_vm.allowedToShowView('month') ? 'up' : '',on:{"click":_vm.showMonthCalendar}},[_vm._v(_vm._s(_vm.isYmd ? _vm.currYearName : _vm.currMonthName)+" "+_vm._s(_vm.isYmd ? _vm.currMonthName : _vm.currYearName))]),_vm._v(" "),_c('span',{staticClass:"next",class:{'disabled': _vm.isRightNavDisabled},on:{"click":function($event){_vm.isRtl ? _vm.previousMonth() : _vm.nextMonth();}}},[_vm._v(">")])]),_vm._v(" "),_c('div',{class:_vm.isRtl ? 'flex-rtl' : ''},[_vm._l((_vm.daysOfWeek),function(d){return _c('span',{key:d.timestamp,staticClass:"cell day-header"},[_vm._v(_vm._s(d))])}),_vm._v(" "),(_vm.blankDays > 0)?_vm._l((_vm.blankDays),function(d){return _c('span',{key:d.timestamp,staticClass:"cell day blank"})}):_vm._e(),_vm._l((_vm.days),function(day){return _c('span',{key:day.timestamp,staticClass:"cell day",class:_vm.dayClasses(day),domProps:{"innerHTML":_vm._s(_vm.dayCellContent(day))},on:{"click":function($event){_vm.selectDate(day);}}})})],2)],2)},staticRenderFns: [],
     props: {
       showDayView: Boolean,
       selectedDate: Date,
@@ -699,6 +550,8 @@
        * @return {Object[]}
        */
       days: function days () {
+        var this$1 = this;
+
         var d = this.pageDate;
         var days = [];
         // set up a new date object to the beginning of the current 'page'
@@ -708,19 +561,19 @@
         var daysInMonth = this.utils.daysInMonth(this.utils.getFullYear(dObj), this.utils.getMonth(dObj));
         for (var i = 0; i < daysInMonth; i++) {
           days.push({
-            date: this.utils.getDate(dObj),
+            date: this$1.utils.getDate(dObj),
             timestamp: dObj.getTime(),
-            isSelected: this.isSelectedDate(dObj),
-            isDisabled: this.isDisabledDate(dObj),
-            isHighlighted: this.isHighlightedDate(dObj),
-            isHighlightStart: this.isHighlightStart(dObj),
-            isHighlightEnd: this.isHighlightEnd(dObj),
-            isToday: this.utils.compareDates(dObj, new Date()),
-            isWeekend: this.utils.getDay(dObj) === 0 || this.utils.getDay(dObj) === 6,
-            isSaturday: this.utils.getDay(dObj) === 6,
-            isSunday: this.utils.getDay(dObj) === 0
+            isSelected: this$1.isSelectedDate(dObj),
+            isDisabled: this$1.isDisabledDate(dObj),
+            isHighlighted: this$1.isHighlightedDate(dObj),
+            isHighlightStart: this$1.isHighlightStart(dObj),
+            isHighlightEnd: this$1.isHighlightEnd(dObj),
+            isToday: this$1.utils.compareDates(dObj, new Date()),
+            isWeekend: this$1.utils.getDay(dObj) === 0 || this$1.utils.getDay(dObj) === 6,
+            isSaturday: this$1.utils.getDay(dObj) === 6,
+            isSunday: this$1.utils.getDay(dObj) === 0
           });
-          this.utils.setDate(dObj, this.utils.getDate(dObj) + 1);
+          this$1.utils.setDate(dObj, this$1.utils.getDate(dObj) + 1);
         }
         return days
       },
@@ -989,156 +842,8 @@
   // eslint-disable-next-line
   ;
 
-  /* script */
-  var __vue_script__$1 = script$1;
-
-  /* template */
-  var __vue_render__$1 = function() {
-    var _vm = this;
-    var _h = _vm.$createElement;
-    var _c = _vm._self._c || _h;
-    return _c(
-      "div",
-      {
-        directives: [
-          {
-            name: "show",
-            rawName: "v-show",
-            value: _vm.showDayView,
-            expression: "showDayView"
-          }
-        ],
-        class: [_vm.calendarClass, "vdp-datepicker__calendar"],
-        style: _vm.calendarStyle,
-        on: {
-          mousedown: function($event) {
-            $event.preventDefault();
-          }
-        }
-      },
-      [
-        _vm._t("beforeCalendarHeader"),
-        _vm._v(" "),
-        _c("header", [
-          _c(
-            "span",
-            {
-              staticClass: "prev",
-              class: { disabled: _vm.isLeftNavDisabled },
-              on: {
-                click: function($event) {
-                  _vm.isRtl ? _vm.nextMonth() : _vm.previousMonth();
-                }
-              }
-            },
-            [_vm._v("<")]
-          ),
-          _vm._v(" "),
-          _c(
-            "span",
-            {
-              staticClass: "day__month_btn",
-              class: _vm.allowedToShowView("month") ? "up" : "",
-              on: { click: _vm.showMonthCalendar }
-            },
-            [
-              _vm._v(
-                _vm._s(_vm.isYmd ? _vm.currYearName : _vm.currMonthName) +
-                  " " +
-                  _vm._s(_vm.isYmd ? _vm.currMonthName : _vm.currYearName)
-              )
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "span",
-            {
-              staticClass: "next",
-              class: { disabled: _vm.isRightNavDisabled },
-              on: {
-                click: function($event) {
-                  _vm.isRtl ? _vm.previousMonth() : _vm.nextMonth();
-                }
-              }
-            },
-            [_vm._v(">")]
-          )
-        ]),
-        _vm._v(" "),
-        _c(
-          "div",
-          { class: _vm.isRtl ? "flex-rtl" : "" },
-          [
-            _vm._l(_vm.daysOfWeek, function(d) {
-              return _c(
-                "span",
-                { key: d.timestamp, staticClass: "cell day-header" },
-                [_vm._v(_vm._s(d))]
-              )
-            }),
-            _vm._v(" "),
-            _vm.blankDays > 0
-              ? _vm._l(_vm.blankDays, function(d) {
-                  return _c("span", {
-                    key: d.timestamp,
-                    staticClass: "cell day blank"
-                  })
-                })
-              : _vm._e(),
-            _vm._l(_vm.days, function(day) {
-              return _c("span", {
-                key: day.timestamp,
-                staticClass: "cell day",
-                class: _vm.dayClasses(day),
-                domProps: { innerHTML: _vm._s(_vm.dayCellContent(day)) },
-                on: {
-                  click: function($event) {
-                    return _vm.selectDate(day)
-                  }
-                }
-              })
-            })
-          ],
-          2
-        )
-      ],
-      2
-    )
-  };
-  var __vue_staticRenderFns__$1 = [];
-  __vue_render__$1._withStripped = true;
-
-    /* style */
-    var __vue_inject_styles__$1 = undefined;
-    /* scoped */
-    var __vue_scope_id__$1 = undefined;
-    /* module identifier */
-    var __vue_module_identifier__$1 = undefined;
-    /* functional template */
-    var __vue_is_functional_template__$1 = false;
-    /* style inject */
-    
-    /* style inject SSR */
-    
-    /* style inject shadow dom */
-    
-
-    
-    var __vue_component__$1 = vueRuntimeHelpers.normalizeComponent(
-      { render: __vue_render__$1, staticRenderFns: __vue_staticRenderFns__$1 },
-      __vue_inject_styles__$1,
-      __vue_script__$1,
-      __vue_scope_id__$1,
-      __vue_is_functional_template__$1,
-      __vue_module_identifier__$1,
-      false,
-      undefined,
-      undefined,
-      undefined
-    );
-
-  //
-  var script$2 = {
+  (function(){ if(typeof document !== 'undefined'){ var head=document.head||document.getElementsByTagName('head')[0], style=document.createElement('style'), css=""; style.type='text/css'; if (style.styleSheet){ style.styleSheet.cssText = css; } else { style.appendChild(document.createTextNode(css)); } head.appendChild(style); } })();
+  var PickerMonth = {render: function(){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.showMonthView),expression:"showMonthView"}],class:[_vm.calendarClass, 'vdp-datepicker__calendar'],style:(_vm.calendarStyle),on:{"mousedown":function($event){$event.preventDefault();}}},[_vm._t("beforeCalendarHeader"),_vm._v(" "),_c('header',[_c('span',{staticClass:"prev",class:{'disabled': _vm.isLeftNavDisabled},on:{"click":function($event){_vm.isRtl ? _vm.nextYear() : _vm.previousYear();}}},[_vm._v("<")]),_vm._v(" "),_c('span',{staticClass:"month__year_btn",class:_vm.allowedToShowView('year') ? 'up' : '',on:{"click":_vm.showYearCalendar}},[_vm._v(_vm._s(_vm.pageYearName))]),_vm._v(" "),_c('span',{staticClass:"next",class:{'disabled': _vm.isRightNavDisabled},on:{"click":function($event){_vm.isRtl ? _vm.previousYear() : _vm.nextYear();}}},[_vm._v(">")])]),_vm._v(" "),_vm._l((_vm.months),function(month){return _c('span',{key:month.timestamp,staticClass:"cell month",class:{'selected': month.isSelected, 'disabled': month.isDisabled},on:{"click":function($event){$event.stopPropagation();_vm.selectMonth(month);}}},[_vm._v(_vm._s(month.month))])})],2)},staticRenderFns: [],
     props: {
       showMonthView: Boolean,
       selectedDate: Date,
@@ -1160,6 +865,8 @@
     },
     computed: {
       months: function months () {
+        var this$1 = this;
+
         var d = this.pageDate;
         var months = [];
         // set up a new date object to the beginning of the current 'page'
@@ -1168,12 +875,12 @@
           : new Date(d.getFullYear(), 0, d.getDate(), d.getHours(), d.getMinutes());
         for (var i = 0; i < 12; i++) {
           months.push({
-            month: this.utils.getMonthName(i, this.translation.months),
+            month: this$1.utils.getMonthName(i, this$1.translation.months),
             timestamp: dObj.getTime(),
-            isSelected: this.isSelectedMonth(dObj),
-            isDisabled: this.isDisabledMonth(dObj)
+            isSelected: this$1.isSelectedMonth(dObj),
+            isDisabled: this$1.isDisabledMonth(dObj)
           });
-          this.utils.setMonth(dObj, this.utils.getMonth(dObj) + 1);
+          this$1.utils.setMonth(dObj, this$1.utils.getMonth(dObj) + 1);
         }
         return months
       },
@@ -1315,131 +1022,8 @@
   // eslint-disable-next-line
   ;
 
-  /* script */
-  var __vue_script__$2 = script$2;
-
-  /* template */
-  var __vue_render__$2 = function() {
-    var _vm = this;
-    var _h = _vm.$createElement;
-    var _c = _vm._self._c || _h;
-    return _c(
-      "div",
-      {
-        directives: [
-          {
-            name: "show",
-            rawName: "v-show",
-            value: _vm.showMonthView,
-            expression: "showMonthView"
-          }
-        ],
-        class: [_vm.calendarClass, "vdp-datepicker__calendar"],
-        style: _vm.calendarStyle,
-        on: {
-          mousedown: function($event) {
-            $event.preventDefault();
-          }
-        }
-      },
-      [
-        _vm._t("beforeCalendarHeader"),
-        _vm._v(" "),
-        _c("header", [
-          _c(
-            "span",
-            {
-              staticClass: "prev",
-              class: { disabled: _vm.isLeftNavDisabled },
-              on: {
-                click: function($event) {
-                  _vm.isRtl ? _vm.nextYear() : _vm.previousYear();
-                }
-              }
-            },
-            [_vm._v("<")]
-          ),
-          _vm._v(" "),
-          _c(
-            "span",
-            {
-              staticClass: "month__year_btn",
-              class: _vm.allowedToShowView("year") ? "up" : "",
-              on: { click: _vm.showYearCalendar }
-            },
-            [_vm._v(_vm._s(_vm.pageYearName))]
-          ),
-          _vm._v(" "),
-          _c(
-            "span",
-            {
-              staticClass: "next",
-              class: { disabled: _vm.isRightNavDisabled },
-              on: {
-                click: function($event) {
-                  _vm.isRtl ? _vm.previousYear() : _vm.nextYear();
-                }
-              }
-            },
-            [_vm._v(">")]
-          )
-        ]),
-        _vm._v(" "),
-        _vm._l(_vm.months, function(month) {
-          return _c(
-            "span",
-            {
-              key: month.timestamp,
-              staticClass: "cell month",
-              class: { selected: month.isSelected, disabled: month.isDisabled },
-              on: {
-                click: function($event) {
-                  $event.stopPropagation();
-                  return _vm.selectMonth(month)
-                }
-              }
-            },
-            [_vm._v(_vm._s(month.month))]
-          )
-        })
-      ],
-      2
-    )
-  };
-  var __vue_staticRenderFns__$2 = [];
-  __vue_render__$2._withStripped = true;
-
-    /* style */
-    var __vue_inject_styles__$2 = undefined;
-    /* scoped */
-    var __vue_scope_id__$2 = undefined;
-    /* module identifier */
-    var __vue_module_identifier__$2 = undefined;
-    /* functional template */
-    var __vue_is_functional_template__$2 = false;
-    /* style inject */
-    
-    /* style inject SSR */
-    
-    /* style inject shadow dom */
-    
-
-    
-    var __vue_component__$2 = vueRuntimeHelpers.normalizeComponent(
-      { render: __vue_render__$2, staticRenderFns: __vue_staticRenderFns__$2 },
-      __vue_inject_styles__$2,
-      __vue_script__$2,
-      __vue_scope_id__$2,
-      __vue_is_functional_template__$2,
-      __vue_module_identifier__$2,
-      false,
-      undefined,
-      undefined,
-      undefined
-    );
-
-  //
-  var script$3 = {
+  (function(){ if(typeof document !== 'undefined'){ var head=document.head||document.getElementsByTagName('head')[0], style=document.createElement('style'), css=""; style.type='text/css'; if (style.styleSheet){ style.styleSheet.cssText = css; } else { style.appendChild(document.createTextNode(css)); } head.appendChild(style); } })();
+  var PickerYear = {render: function(){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.showYearView),expression:"showYearView"}],class:[_vm.calendarClass, 'vdp-datepicker__calendar'],style:(_vm.calendarStyle),on:{"mousedown":function($event){$event.preventDefault();}}},[_vm._t("beforeCalendarHeader"),_vm._v(" "),_c('header',[_c('span',{staticClass:"prev",class:{'disabled': _vm.isLeftNavDisabled},on:{"click":function($event){_vm.isRtl ? _vm.nextDecade() : _vm.previousDecade();}}},[_vm._v("<")]),_vm._v(" "),_c('span',[_vm._v(_vm._s(_vm.getPageDecade))]),_vm._v(" "),_c('span',{staticClass:"next",class:{'disabled': _vm.isRightNavDisabled},on:{"click":function($event){_vm.isRtl ? _vm.previousDecade() : _vm.nextDecade();}}},[_vm._v(">")])]),_vm._v(" "),_vm._l((_vm.years),function(year){return _c('span',{key:year.timestamp,staticClass:"cell year",class:{ 'selected': year.isSelected, 'disabled': year.isDisabled },on:{"click":function($event){$event.stopPropagation();_vm.selectYear(year);}}},[_vm._v(_vm._s(year.year))])})],2)},staticRenderFns: [],
     props: {
       showYearView: Boolean,
       selectedDate: Date,
@@ -1456,6 +1040,8 @@
     },
     computed: {
       years: function years () {
+        var this$1 = this;
+
         var d = this.pageDate;
         var years = [];
         // set up a new date object to the beginning of the current 'page'7
@@ -1464,12 +1050,12 @@
           : new Date(Math.floor(d.getFullYear() / 10) * 10, d.getMonth(), d.getDate(), d.getHours(), d.getMinutes());
         for (var i = 0; i < 10; i++) {
           years.push({
-            year: this.utils.getFullYear(dObj),
+            year: this$1.utils.getFullYear(dObj),
             timestamp: dObj.getTime(),
-            isSelected: this.isSelectedYear(dObj),
-            isDisabled: this.isDisabledYear(dObj)
+            isSelected: this$1.isSelectedYear(dObj),
+            isDisabled: this$1.isDisabledYear(dObj)
           });
-          this.utils.setFullYear(dObj, this.utils.getFullYear(dObj) + 1);
+          this$1.utils.setFullYear(dObj, this$1.utils.getFullYear(dObj) + 1);
         }
         return years
       },
@@ -1589,128 +1175,13 @@
   // eslint-disable-next-line
   ;
 
-  /* script */
-  var __vue_script__$3 = script$3;
-
-  /* template */
-  var __vue_render__$3 = function() {
-    var _vm = this;
-    var _h = _vm.$createElement;
-    var _c = _vm._self._c || _h;
-    return _c(
-      "div",
-      {
-        directives: [
-          {
-            name: "show",
-            rawName: "v-show",
-            value: _vm.showYearView,
-            expression: "showYearView"
-          }
-        ],
-        class: [_vm.calendarClass, "vdp-datepicker__calendar"],
-        style: _vm.calendarStyle,
-        on: {
-          mousedown: function($event) {
-            $event.preventDefault();
-          }
-        }
-      },
-      [
-        _vm._t("beforeCalendarHeader"),
-        _vm._v(" "),
-        _c("header", [
-          _c(
-            "span",
-            {
-              staticClass: "prev",
-              class: { disabled: _vm.isLeftNavDisabled },
-              on: {
-                click: function($event) {
-                  _vm.isRtl ? _vm.nextDecade() : _vm.previousDecade();
-                }
-              }
-            },
-            [_vm._v("<")]
-          ),
-          _vm._v(" "),
-          _c("span", [_vm._v(_vm._s(_vm.getPageDecade))]),
-          _vm._v(" "),
-          _c(
-            "span",
-            {
-              staticClass: "next",
-              class: { disabled: _vm.isRightNavDisabled },
-              on: {
-                click: function($event) {
-                  _vm.isRtl ? _vm.previousDecade() : _vm.nextDecade();
-                }
-              }
-            },
-            [_vm._v(">")]
-          )
-        ]),
-        _vm._v(" "),
-        _vm._l(_vm.years, function(year) {
-          return _c(
-            "span",
-            {
-              key: year.timestamp,
-              staticClass: "cell year",
-              class: { selected: year.isSelected, disabled: year.isDisabled },
-              on: {
-                click: function($event) {
-                  $event.stopPropagation();
-                  return _vm.selectYear(year)
-                }
-              }
-            },
-            [_vm._v(_vm._s(year.year))]
-          )
-        })
-      ],
-      2
-    )
-  };
-  var __vue_staticRenderFns__$3 = [];
-  __vue_render__$3._withStripped = true;
-
-    /* style */
-    var __vue_inject_styles__$3 = undefined;
-    /* scoped */
-    var __vue_scope_id__$3 = undefined;
-    /* module identifier */
-    var __vue_module_identifier__$3 = undefined;
-    /* functional template */
-    var __vue_is_functional_template__$3 = false;
-    /* style inject */
-    
-    /* style inject SSR */
-    
-    /* style inject shadow dom */
-    
-
-    
-    var __vue_component__$3 = vueRuntimeHelpers.normalizeComponent(
-      { render: __vue_render__$3, staticRenderFns: __vue_staticRenderFns__$3 },
-      __vue_inject_styles__$3,
-      __vue_script__$3,
-      __vue_scope_id__$3,
-      __vue_is_functional_template__$3,
-      __vue_module_identifier__$3,
-      false,
-      undefined,
-      undefined,
-      undefined
-    );
-
-  //
-  var script$4 = {
+  (function(){ if(typeof document !== 'undefined'){ var head=document.head||document.getElementsByTagName('head')[0], style=document.createElement('style'), css=".rtl { direction: rtl; } .vdp-datepicker { position: relative; text-align: left; } .vdp-datepicker * { box-sizing: border-box; } .vdp-datepicker__calendar { position: absolute; z-index: 100; background: #fff; width: 300px; border: 1px solid #ccc; } .vdp-datepicker__calendar header { display: block; line-height: 40px; } .vdp-datepicker__calendar header span { display: inline-block; text-align: center; width: 71.42857142857143%; float: left; } .vdp-datepicker__calendar header .prev, .vdp-datepicker__calendar header .next { width: 14.285714285714286%; float: left; text-indent: -10000px; position: relative; } .vdp-datepicker__calendar header .prev:after, .vdp-datepicker__calendar header .next:after { content: ''; position: absolute; left: 50%; top: 50%; -webkit-transform: translateX(-50%) translateY(-50%); transform: translateX(-50%) translateY(-50%); border: 6px solid transparent; } .vdp-datepicker__calendar header .prev:after { border-right: 10px solid #000; margin-left: -5px; } .vdp-datepicker__calendar header .prev.disabled:after { border-right: 10px solid #ddd; } .vdp-datepicker__calendar header .next:after { border-left: 10px solid #000; margin-left: 5px; } .vdp-datepicker__calendar header .next.disabled:after { border-left: 10px solid #ddd; } .vdp-datepicker__calendar header .prev:not(.disabled), .vdp-datepicker__calendar header .next:not(.disabled), .vdp-datepicker__calendar header .up:not(.disabled) { cursor: pointer; } .vdp-datepicker__calendar header .prev:not(.disabled):hover, .vdp-datepicker__calendar header .next:not(.disabled):hover, .vdp-datepicker__calendar header .up:not(.disabled):hover { background: #eee; } .vdp-datepicker__calendar .disabled { color: #ddd; cursor: default; } .vdp-datepicker__calendar .flex-rtl { display: flex; width: inherit; flex-wrap: wrap; } .vdp-datepicker__calendar .cell { display: inline-block; padding: 0 5px; width: 14.285714285714286%; height: 40px; line-height: 40px; text-align: center; vertical-align: middle; border: 1px solid transparent; } .vdp-datepicker__calendar .cell:not(.blank):not(.disabled).day, .vdp-datepicker__calendar .cell:not(.blank):not(.disabled).month, .vdp-datepicker__calendar .cell:not(.blank):not(.disabled).year { cursor: pointer; } .vdp-datepicker__calendar .cell:not(.blank):not(.disabled).day:hover, .vdp-datepicker__calendar .cell:not(.blank):not(.disabled).month:hover, .vdp-datepicker__calendar .cell:not(.blank):not(.disabled).year:hover { border: 1px solid #4bd; } .vdp-datepicker__calendar .cell.selected { background: #4bd; } .vdp-datepicker__calendar .cell.selected:hover { background: #4bd; } .vdp-datepicker__calendar .cell.selected.highlighted { background: #4bd; } .vdp-datepicker__calendar .cell.highlighted { background: #cae5ed; } .vdp-datepicker__calendar .cell.highlighted.disabled { color: #a3a3a3; } .vdp-datepicker__calendar .cell.grey { color: #888; } .vdp-datepicker__calendar .cell.grey:hover { background: inherit; } .vdp-datepicker__calendar .cell.day-header { font-size: 75%; white-space: nowrap; cursor: inherit; } .vdp-datepicker__calendar .cell.day-header:hover { background: inherit; } .vdp-datepicker__calendar .month, .vdp-datepicker__calendar .year { width: 33.333%; } .vdp-datepicker__clear-button, .vdp-datepicker__calendar-button { cursor: pointer; font-style: normal; } .vdp-datepicker__clear-button.disabled, .vdp-datepicker__calendar-button.disabled { color: #999; cursor: default; } "; style.type='text/css'; if (style.styleSheet){ style.styleSheet.cssText = css; } else { style.appendChild(document.createTextNode(css)); } head.appendChild(style); } })();
+  var Datepicker = {render: function(){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"vdp-datepicker",class:[_vm.wrapperClass, _vm.isRtl ? 'rtl' : '']},[_c('date-input',{attrs:{"selectedDate":_vm.selectedDate,"resetTypedDate":_vm.resetTypedDate,"format":_vm.format,"translation":_vm.translation,"inline":_vm.inline,"id":_vm.id,"name":_vm.name,"refName":_vm.refName,"openDate":_vm.openDate,"placeholder":_vm.placeholder,"inputClass":_vm.inputClass,"typeable":_vm.typeable,"clearButton":_vm.clearButton,"clearButtonIcon":_vm.clearButtonIcon,"calendarButton":_vm.calendarButton,"calendarButtonIcon":_vm.calendarButtonIcon,"calendarButtonIconContent":_vm.calendarButtonIconContent,"disabled":_vm.disabled,"required":_vm.required,"bootstrapStyling":_vm.bootstrapStyling,"use-utc":_vm.useUtc,"vMaskPattern":_vm.vMaskPattern},on:{"showCalendar":_vm.showCalendar,"closeCalendar":_vm.close,"typedDate":_vm.setTypedDate,"clearDate":_vm.clearDate}},[_vm._t("afterDateInput",null,{slot:"afterDateInput"})],2),_vm._v(" "),(_vm.allowedToShowView('day'))?_c('picker-day',{attrs:{"pageDate":_vm.pageDate,"selectedDate":_vm.selectedDate,"showDayView":_vm.showDayView,"fullMonthName":_vm.fullMonthName,"allowedToShowView":_vm.allowedToShowView,"disabledDates":_vm.disabledDates,"highlighted":_vm.highlighted,"calendarClass":_vm.calendarClass,"calendarStyle":_vm.calendarStyle,"translation":_vm.translation,"pageTimestamp":_vm.pageTimestamp,"isRtl":_vm.isRtl,"mondayFirst":_vm.mondayFirst,"dayCellContent":_vm.dayCellContent,"use-utc":_vm.useUtc},on:{"changedMonth":_vm.handleChangedMonthFromDayPicker,"selectDate":_vm.selectDate,"showMonthCalendar":_vm.showMonthCalendar,"selectedDisabled":_vm.selectDisabledDate}},[_vm._t("beforeCalendarHeader",null,{slot:"beforeCalendarHeader"})],2):_vm._e(),_vm._v(" "),(_vm.allowedToShowView('month'))?_c('picker-month',{attrs:{"pageDate":_vm.pageDate,"selectedDate":_vm.selectedDate,"showMonthView":_vm.showMonthView,"allowedToShowView":_vm.allowedToShowView,"disabledDates":_vm.disabledDates,"calendarClass":_vm.calendarClass,"calendarStyle":_vm.calendarStyle,"translation":_vm.translation,"isRtl":_vm.isRtl,"use-utc":_vm.useUtc},on:{"selectMonth":_vm.selectMonth,"showYearCalendar":_vm.showYearCalendar,"changedYear":_vm.setPageDate}},[_vm._t("beforeCalendarHeader",null,{slot:"beforeCalendarHeader"})],2):_vm._e(),_vm._v(" "),(_vm.allowedToShowView('year'))?_c('picker-year',{attrs:{"pageDate":_vm.pageDate,"selectedDate":_vm.selectedDate,"showYearView":_vm.showYearView,"allowedToShowView":_vm.allowedToShowView,"disabledDates":_vm.disabledDates,"calendarClass":_vm.calendarClass,"calendarStyle":_vm.calendarStyle,"translation":_vm.translation,"isRtl":_vm.isRtl,"use-utc":_vm.useUtc},on:{"selectYear":_vm.selectYear,"changedDecade":_vm.setPageDate}},[_vm._t("beforeCalendarHeader",null,{slot:"beforeCalendarHeader"})],2):_vm._e()],1)},staticRenderFns: [],
     components: {
-      DateInput: __vue_component__,
-      PickerDay: __vue_component__$1,
-      PickerMonth: __vue_component__$2,
-      PickerYear: __vue_component__$3
+      DateInput: DateInput,
+      PickerDay: PickerDay,
+      PickerMonth: PickerMonth,
+      PickerYear: PickerYear
     },
     props: {
       value: {
@@ -2066,191 +1537,6 @@
   // eslint-disable-next-line
   ;
 
-  /* script */
-  var __vue_script__$4 = script$4;
-
-  /* template */
-  var __vue_render__$4 = function() {
-    var _vm = this;
-    var _h = _vm.$createElement;
-    var _c = _vm._self._c || _h;
-    return _c(
-      "div",
-      {
-        staticClass: "vdp-datepicker",
-        class: [_vm.wrapperClass, _vm.isRtl ? "rtl" : ""]
-      },
-      [
-        _c(
-          "date-input",
-          {
-            attrs: {
-              selectedDate: _vm.selectedDate,
-              resetTypedDate: _vm.resetTypedDate,
-              format: _vm.format,
-              translation: _vm.translation,
-              inline: _vm.inline,
-              id: _vm.id,
-              name: _vm.name,
-              refName: _vm.refName,
-              openDate: _vm.openDate,
-              placeholder: _vm.placeholder,
-              inputClass: _vm.inputClass,
-              typeable: _vm.typeable,
-              clearButton: _vm.clearButton,
-              clearButtonIcon: _vm.clearButtonIcon,
-              calendarButton: _vm.calendarButton,
-              calendarButtonIcon: _vm.calendarButtonIcon,
-              calendarButtonIconContent: _vm.calendarButtonIconContent,
-              disabled: _vm.disabled,
-              required: _vm.required,
-              bootstrapStyling: _vm.bootstrapStyling,
-              "use-utc": _vm.useUtc,
-              vMaskPattern: _vm.vMaskPattern
-            },
-            on: {
-              showCalendar: _vm.showCalendar,
-              closeCalendar: _vm.close,
-              typedDate: _vm.setTypedDate,
-              clearDate: _vm.clearDate
-            }
-          },
-          [_vm._t("afterDateInput", null, { slot: "afterDateInput" })],
-          2
-        ),
-        _vm._v(" "),
-        _vm.allowedToShowView("day")
-          ? _c(
-              "picker-day",
-              {
-                attrs: {
-                  pageDate: _vm.pageDate,
-                  selectedDate: _vm.selectedDate,
-                  showDayView: _vm.showDayView,
-                  fullMonthName: _vm.fullMonthName,
-                  allowedToShowView: _vm.allowedToShowView,
-                  disabledDates: _vm.disabledDates,
-                  highlighted: _vm.highlighted,
-                  calendarClass: _vm.calendarClass,
-                  calendarStyle: _vm.calendarStyle,
-                  translation: _vm.translation,
-                  pageTimestamp: _vm.pageTimestamp,
-                  isRtl: _vm.isRtl,
-                  mondayFirst: _vm.mondayFirst,
-                  dayCellContent: _vm.dayCellContent,
-                  "use-utc": _vm.useUtc
-                },
-                on: {
-                  changedMonth: _vm.handleChangedMonthFromDayPicker,
-                  selectDate: _vm.selectDate,
-                  showMonthCalendar: _vm.showMonthCalendar,
-                  selectedDisabled: _vm.selectDisabledDate
-                }
-              },
-              [
-                _vm._t("beforeCalendarHeader", null, {
-                  slot: "beforeCalendarHeader"
-                })
-              ],
-              2
-            )
-          : _vm._e(),
-        _vm._v(" "),
-        _vm.allowedToShowView("month")
-          ? _c(
-              "picker-month",
-              {
-                attrs: {
-                  pageDate: _vm.pageDate,
-                  selectedDate: _vm.selectedDate,
-                  showMonthView: _vm.showMonthView,
-                  allowedToShowView: _vm.allowedToShowView,
-                  disabledDates: _vm.disabledDates,
-                  calendarClass: _vm.calendarClass,
-                  calendarStyle: _vm.calendarStyle,
-                  translation: _vm.translation,
-                  isRtl: _vm.isRtl,
-                  "use-utc": _vm.useUtc
-                },
-                on: {
-                  selectMonth: _vm.selectMonth,
-                  showYearCalendar: _vm.showYearCalendar,
-                  changedYear: _vm.setPageDate
-                }
-              },
-              [
-                _vm._t("beforeCalendarHeader", null, {
-                  slot: "beforeCalendarHeader"
-                })
-              ],
-              2
-            )
-          : _vm._e(),
-        _vm._v(" "),
-        _vm.allowedToShowView("year")
-          ? _c(
-              "picker-year",
-              {
-                attrs: {
-                  pageDate: _vm.pageDate,
-                  selectedDate: _vm.selectedDate,
-                  showYearView: _vm.showYearView,
-                  allowedToShowView: _vm.allowedToShowView,
-                  disabledDates: _vm.disabledDates,
-                  calendarClass: _vm.calendarClass,
-                  calendarStyle: _vm.calendarStyle,
-                  translation: _vm.translation,
-                  isRtl: _vm.isRtl,
-                  "use-utc": _vm.useUtc
-                },
-                on: { selectYear: _vm.selectYear, changedDecade: _vm.setPageDate }
-              },
-              [
-                _vm._t("beforeCalendarHeader", null, {
-                  slot: "beforeCalendarHeader"
-                })
-              ],
-              2
-            )
-          : _vm._e()
-      ],
-      1
-    )
-  };
-  var __vue_staticRenderFns__$4 = [];
-  __vue_render__$4._withStripped = true;
-
-    /* style */
-    var __vue_inject_styles__$4 = function (inject) {
-      if (!inject) { return }
-      inject("data-v-e581cfd4_0", { source: ".rtl {\n  direction: rtl;\n}\n.vdp-datepicker {\n  position: relative;\n  text-align: left;\n}\n.vdp-datepicker * {\n  box-sizing: border-box;\n}\n.vdp-datepicker__calendar {\n  position: absolute;\n  z-index: 100;\n  background: #fff;\n  width: 300px;\n  border: 1px solid #ccc;\n}\n.vdp-datepicker__calendar header {\n  display: block;\n  line-height: 40px;\n}\n.vdp-datepicker__calendar header span {\n  display: inline-block;\n  text-align: center;\n  width: 71.42857142857143%;\n  float: left;\n}\n.vdp-datepicker__calendar header .prev,\n.vdp-datepicker__calendar header .next {\n  width: 14.285714285714286%;\n  float: left;\n  text-indent: -10000px;\n  position: relative;\n}\n.vdp-datepicker__calendar header .prev:after,\n.vdp-datepicker__calendar header .next:after {\n  content: '';\n  position: absolute;\n  left: 50%;\n  top: 50%;\n  transform: translateX(-50%) translateY(-50%);\n  border: 6px solid transparent;\n}\n.vdp-datepicker__calendar header .prev:after {\n  border-right: 10px solid #000;\n  margin-left: -5px;\n}\n.vdp-datepicker__calendar header .prev.disabled:after {\n  border-right: 10px solid #ddd;\n}\n.vdp-datepicker__calendar header .next:after {\n  border-left: 10px solid #000;\n  margin-left: 5px;\n}\n.vdp-datepicker__calendar header .next.disabled:after {\n  border-left: 10px solid #ddd;\n}\n.vdp-datepicker__calendar header .prev:not(.disabled),\n.vdp-datepicker__calendar header .next:not(.disabled),\n.vdp-datepicker__calendar header .up:not(.disabled) {\n  cursor: pointer;\n}\n.vdp-datepicker__calendar header .prev:not(.disabled):hover,\n.vdp-datepicker__calendar header .next:not(.disabled):hover,\n.vdp-datepicker__calendar header .up:not(.disabled):hover {\n  background: #eee;\n}\n.vdp-datepicker__calendar .disabled {\n  color: #ddd;\n  cursor: default;\n}\n.vdp-datepicker__calendar .flex-rtl {\n  display: flex;\n  width: inherit;\n  flex-wrap: wrap;\n}\n.vdp-datepicker__calendar .cell {\n  display: inline-block;\n  padding: 0 5px;\n  width: 14.285714285714286%;\n  height: 40px;\n  line-height: 40px;\n  text-align: center;\n  vertical-align: middle;\n  border: 1px solid transparent;\n}\n.vdp-datepicker__calendar .cell:not(.blank):not(.disabled).day,\n.vdp-datepicker__calendar .cell:not(.blank):not(.disabled).month,\n.vdp-datepicker__calendar .cell:not(.blank):not(.disabled).year {\n  cursor: pointer;\n}\n.vdp-datepicker__calendar .cell:not(.blank):not(.disabled).day:hover,\n.vdp-datepicker__calendar .cell:not(.blank):not(.disabled).month:hover,\n.vdp-datepicker__calendar .cell:not(.blank):not(.disabled).year:hover {\n  border: 1px solid #4bd;\n}\n.vdp-datepicker__calendar .cell.selected {\n  background: #4bd;\n}\n.vdp-datepicker__calendar .cell.selected:hover {\n  background: #4bd;\n}\n.vdp-datepicker__calendar .cell.selected.highlighted {\n  background: #4bd;\n}\n.vdp-datepicker__calendar .cell.highlighted {\n  background: #cae5ed;\n}\n.vdp-datepicker__calendar .cell.highlighted.disabled {\n  color: #a3a3a3;\n}\n.vdp-datepicker__calendar .cell.grey {\n  color: #888;\n}\n.vdp-datepicker__calendar .cell.grey:hover {\n  background: inherit;\n}\n.vdp-datepicker__calendar .cell.day-header {\n  font-size: 75%;\n  white-space: nowrap;\n  cursor: inherit;\n}\n.vdp-datepicker__calendar .cell.day-header:hover {\n  background: inherit;\n}\n.vdp-datepicker__calendar .month,\n.vdp-datepicker__calendar .year {\n  width: 33.333%;\n}\n.vdp-datepicker__clear-button,\n.vdp-datepicker__calendar-button {\n  cursor: pointer;\n  font-style: normal;\n}\n.vdp-datepicker__clear-button.disabled,\n.vdp-datepicker__calendar-button.disabled {\n  color: #999;\n  cursor: default;\n}\n", map: {"version":3,"sources":["Datepicker.vue"],"names":[],"mappings":"AAAA;EACE,cAAc;AAChB;AACA;EACE,kBAAkB;EAClB,gBAAgB;AAClB;AACA;EACE,sBAAsB;AACxB;AACA;EACE,kBAAkB;EAClB,YAAY;EACZ,gBAAgB;EAChB,YAAY;EACZ,sBAAsB;AACxB;AACA;EACE,cAAc;EACd,iBAAiB;AACnB;AACA;EACE,qBAAqB;EACrB,kBAAkB;EAClB,yBAAyB;EACzB,WAAW;AACb;AACA;;EAEE,0BAA0B;EAC1B,WAAW;EACX,qBAAqB;EACrB,kBAAkB;AACpB;AACA;;EAEE,WAAW;EACX,kBAAkB;EAClB,SAAS;EACT,QAAQ;EACR,4CAA4C;EAC5C,6BAA6B;AAC/B;AACA;EACE,6BAA6B;EAC7B,iBAAiB;AACnB;AACA;EACE,6BAA6B;AAC/B;AACA;EACE,4BAA4B;EAC5B,gBAAgB;AAClB;AACA;EACE,4BAA4B;AAC9B;AACA;;;EAGE,eAAe;AACjB;AACA;;;EAGE,gBAAgB;AAClB;AACA;EACE,WAAW;EACX,eAAe;AACjB;AACA;EACE,aAAa;EACb,cAAc;EACd,eAAe;AACjB;AACA;EACE,qBAAqB;EACrB,cAAc;EACd,0BAA0B;EAC1B,YAAY;EACZ,iBAAiB;EACjB,kBAAkB;EAClB,sBAAsB;EACtB,6BAA6B;AAC/B;AACA;;;EAGE,eAAe;AACjB;AACA;;;EAGE,sBAAsB;AACxB;AACA;EACE,gBAAgB;AAClB;AACA;EACE,gBAAgB;AAClB;AACA;EACE,gBAAgB;AAClB;AACA;EACE,mBAAmB;AACrB;AACA;EACE,cAAc;AAChB;AACA;EACE,WAAW;AACb;AACA;EACE,mBAAmB;AACrB;AACA;EACE,cAAc;EACd,mBAAmB;EACnB,eAAe;AACjB;AACA;EACE,mBAAmB;AACrB;AACA;;EAEE,cAAc;AAChB;AACA;;EAEE,eAAe;EACf,kBAAkB;AACpB;AACA;;EAEE,WAAW;EACX,eAAe;AACjB","file":"Datepicker.vue","sourcesContent":[".rtl {\n  direction: rtl;\n}\n.vdp-datepicker {\n  position: relative;\n  text-align: left;\n}\n.vdp-datepicker * {\n  box-sizing: border-box;\n}\n.vdp-datepicker__calendar {\n  position: absolute;\n  z-index: 100;\n  background: #fff;\n  width: 300px;\n  border: 1px solid #ccc;\n}\n.vdp-datepicker__calendar header {\n  display: block;\n  line-height: 40px;\n}\n.vdp-datepicker__calendar header span {\n  display: inline-block;\n  text-align: center;\n  width: 71.42857142857143%;\n  float: left;\n}\n.vdp-datepicker__calendar header .prev,\n.vdp-datepicker__calendar header .next {\n  width: 14.285714285714286%;\n  float: left;\n  text-indent: -10000px;\n  position: relative;\n}\n.vdp-datepicker__calendar header .prev:after,\n.vdp-datepicker__calendar header .next:after {\n  content: '';\n  position: absolute;\n  left: 50%;\n  top: 50%;\n  transform: translateX(-50%) translateY(-50%);\n  border: 6px solid transparent;\n}\n.vdp-datepicker__calendar header .prev:after {\n  border-right: 10px solid #000;\n  margin-left: -5px;\n}\n.vdp-datepicker__calendar header .prev.disabled:after {\n  border-right: 10px solid #ddd;\n}\n.vdp-datepicker__calendar header .next:after {\n  border-left: 10px solid #000;\n  margin-left: 5px;\n}\n.vdp-datepicker__calendar header .next.disabled:after {\n  border-left: 10px solid #ddd;\n}\n.vdp-datepicker__calendar header .prev:not(.disabled),\n.vdp-datepicker__calendar header .next:not(.disabled),\n.vdp-datepicker__calendar header .up:not(.disabled) {\n  cursor: pointer;\n}\n.vdp-datepicker__calendar header .prev:not(.disabled):hover,\n.vdp-datepicker__calendar header .next:not(.disabled):hover,\n.vdp-datepicker__calendar header .up:not(.disabled):hover {\n  background: #eee;\n}\n.vdp-datepicker__calendar .disabled {\n  color: #ddd;\n  cursor: default;\n}\n.vdp-datepicker__calendar .flex-rtl {\n  display: flex;\n  width: inherit;\n  flex-wrap: wrap;\n}\n.vdp-datepicker__calendar .cell {\n  display: inline-block;\n  padding: 0 5px;\n  width: 14.285714285714286%;\n  height: 40px;\n  line-height: 40px;\n  text-align: center;\n  vertical-align: middle;\n  border: 1px solid transparent;\n}\n.vdp-datepicker__calendar .cell:not(.blank):not(.disabled).day,\n.vdp-datepicker__calendar .cell:not(.blank):not(.disabled).month,\n.vdp-datepicker__calendar .cell:not(.blank):not(.disabled).year {\n  cursor: pointer;\n}\n.vdp-datepicker__calendar .cell:not(.blank):not(.disabled).day:hover,\n.vdp-datepicker__calendar .cell:not(.blank):not(.disabled).month:hover,\n.vdp-datepicker__calendar .cell:not(.blank):not(.disabled).year:hover {\n  border: 1px solid #4bd;\n}\n.vdp-datepicker__calendar .cell.selected {\n  background: #4bd;\n}\n.vdp-datepicker__calendar .cell.selected:hover {\n  background: #4bd;\n}\n.vdp-datepicker__calendar .cell.selected.highlighted {\n  background: #4bd;\n}\n.vdp-datepicker__calendar .cell.highlighted {\n  background: #cae5ed;\n}\n.vdp-datepicker__calendar .cell.highlighted.disabled {\n  color: #a3a3a3;\n}\n.vdp-datepicker__calendar .cell.grey {\n  color: #888;\n}\n.vdp-datepicker__calendar .cell.grey:hover {\n  background: inherit;\n}\n.vdp-datepicker__calendar .cell.day-header {\n  font-size: 75%;\n  white-space: nowrap;\n  cursor: inherit;\n}\n.vdp-datepicker__calendar .cell.day-header:hover {\n  background: inherit;\n}\n.vdp-datepicker__calendar .month,\n.vdp-datepicker__calendar .year {\n  width: 33.333%;\n}\n.vdp-datepicker__clear-button,\n.vdp-datepicker__calendar-button {\n  cursor: pointer;\n  font-style: normal;\n}\n.vdp-datepicker__clear-button.disabled,\n.vdp-datepicker__calendar-button.disabled {\n  color: #999;\n  cursor: default;\n}\n"]}, media: undefined });
-
-    };
-    /* scoped */
-    var __vue_scope_id__$4 = undefined;
-    /* module identifier */
-    var __vue_module_identifier__$4 = undefined;
-    /* functional template */
-    var __vue_is_functional_template__$4 = false;
-    /* style inject SSR */
-    
-    /* style inject shadow dom */
-    
-
-    
-    var __vue_component__$4 = vueRuntimeHelpers.normalizeComponent(
-      { render: __vue_render__$4, staticRenderFns: __vue_staticRenderFns__$4 },
-      __vue_inject_styles__$4,
-      __vue_script__$4,
-      __vue_scope_id__$4,
-      __vue_is_functional_template__$4,
-      __vue_module_identifier__$4,
-      false,
-      vueRuntimeHelpers.createInjector,
-      undefined,
-      undefined
-    );
-
-  return __vue_component__$4;
+  return Datepicker;
 
 })));
